@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.ServiceProviderExtensions
+namespace Common.Extensions.ServiceProviderExtensions
 {
     /// <summary>
     /// Extensions to be used by middleware in program.cs
@@ -27,7 +27,7 @@ namespace Common.ServiceProviderExtensions
                 var services = scope.ServiceProvider;
 
                 //Auto migration/create
-                var context = (DbContext) services.GetRequiredService<T>();
+                var context = (DbContext)services.GetRequiredService<T>();
                 context.Database.Migrate();
             }
         }
@@ -40,7 +40,7 @@ namespace Common.ServiceProviderExtensions
             {
                 var services = scope.ServiceProvider;
                 var dbContext = scope.ServiceProvider.GetService<TDbContext>();
-
+                
                 if (dbContext is not null)
                 {
                     var migrationHistory = dbContext.Database.GetMigrations();

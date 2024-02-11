@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ namespace Common.Models
 {
     public class BaseEntity : IBaseEntity
     {
-        public Guid Id { get; set; }
+        [Key]
+        public Guid EntityId { get; set; }
 
         public string? CreatedBy { get; set; }
 
@@ -21,7 +23,7 @@ namespace Common.Models
 
         public BaseEntity()
         {
-            Id = Guid.NewGuid();
+            EntityId = Guid.NewGuid();
         }
     }
 }

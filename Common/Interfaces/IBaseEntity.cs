@@ -8,7 +8,7 @@ namespace Common.Interfaces
 {
     public interface IBaseEntity
     {
-        public Guid Id { get; set; }
+        public Guid EntityId { get; set; }
 
         public string? CreatedBy { get; set; }
 
